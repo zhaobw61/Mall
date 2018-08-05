@@ -5,4 +5,9 @@
 # 项目介绍
 建立一个电商网站
 # 技术
-Html CSS JQuery React Sass
+Html CSS jQuery React Sass commonJS
+# 辅助工具
+webpack NodeJs NPM Shell
+# 架构设计
+前后端完全分离 分层架构 模块化
+
