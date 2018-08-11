@@ -2,13 +2,16 @@
  * @Author: zhaobowen 
  * @Date: 2018-08-11 14:58:11 
  * @Last Modified by: zhaobowen
- * @Last Modified time: 2018-08-11 22:22:33
+ * @Last Modified time: 2018-08-12 01:28:13
  */
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require("path");
-var outputPath = path.resolve(__dirname, './dist')
+var outputPath = path.resolve(__dirname, './dist');
+
+// 环境变量的配置， dev/online
+var WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
 // 获取 html-webpack-plugin参数的方法
 var getHtmlConfig = function(name){
     return {
@@ -16,7 +19,7 @@ var getHtmlConfig = function(name){
         filename:'view/'+name+'.html',
         inject  : true,
         hash    :true,
-        chunks  :['common',name]
+        chunks  :['common',name] // 这里可以为不同的页面搭配不同的js
     }
 }
 
@@ -28,15 +31,18 @@ var config = {
     },
     output: {
         path: outputPath,
+        publicPath:'/dist',
         filename: 'js/[name].js'
     },
     module:{
         loaders:[
-            {test:/\.css$/,loader:ExtractTextPlugin.extract ("style-loader","css-loader")}
+            {test:/\.css$/,loader:ExtractTextPlugin.extract ("style-loader","css-loader")},
+            {test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=100&name=resource/[name].[ext]' },
+
         ],
     },
     plugins: [
-        // 独立通用模块到dist/js/base.js
+        // 独立通用模块到dist/js/base.js  如果有多个独立通用的模块怎么办？
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
             filename: 'js/base.js'
@@ -48,4 +54,9 @@ var config = {
         new HtmlWebpackPlugin(getHtmlConfig('login')),
     ],
 }
+
+if(WEBPACK_ENV === 'dev'){
+    config.entry.common.push('webpack-dev-server/client?http://localhost:8088/');
+}
+
 module.exports = config;
