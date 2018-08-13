@@ -2,7 +2,7 @@
  * @Author: zhaobowen 
  * @Date: 2018-08-11 14:58:11 
  * @Last Modified by: zhaobowen
- * @Last Modified time: 2018-08-12 01:28:13
+ * @Last Modified time: 2018-08-14 01:07:30
  */
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -40,6 +40,15 @@ var config = {
             {test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=100&name=resource/[name].[ext]' },
 
         ],
+    },
+    resolve:{ // 为什么这么做？
+        alias:{
+            node_modules    : __dirname + '/node_modules',
+            util            :__dirname + '/src/util',
+            page            :__dirname + '/src/page',
+            service         :__dirname + '/src/service',
+            image           :__dirname + '/src/image',
+        }
     },
     plugins: [
         // 独立通用模块到dist/js/base.js  如果有多个独立通用的模块怎么办？
