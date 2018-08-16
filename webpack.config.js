@@ -2,7 +2,7 @@
  * @Author: zhaobowen 
  * @Date: 2018-08-11 14:58:11 
  * @Last Modified by: zhaobowen
- * @Last Modified time: 2018-08-14 01:07:30
+ * @Last Modified time: 2018-08-16 23:58:27
  */
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -43,7 +43,7 @@ var config = {
     },
     resolve:{ // 为什么这么做？
         alias:{
-            node_modules    : __dirname + '/node_modules',
+            node_modules    :__dirname + '/node_modules',
             util            :__dirname + '/src/util',
             page            :__dirname + '/src/page',
             service         :__dirname + '/src/service',
