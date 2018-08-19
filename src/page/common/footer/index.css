@@ -1,0 +1,22 @@
+/*
+ * @Author: zhaobowen 
+ * @Date: 2018-08-18 11:19:15 
+ * @Last Modified by: zhaobowen
+ * @Last Modified time: 2018-08-18 11:23:56
+ */
+.footer{
+    padding-bottom: 10px;
+}
+.footer .links{
+    text-align: center;
+    color: #666;
+    line-height: 30px;
+}
+.footer .links .link{
+    padding: 10px;
+}
+.footer .copyright{
+    text-align: center;
+    color: #666;
+    line-height:30px;
+}
