@@ -2,7 +2,7 @@
  * @Author: zhaobowen 
  * @Date: 2018-08-11 14:58:11 
  * @Last Modified by: zhaobowen
- * @Last Modified time: 2018-08-16 23:58:27
+ * @Last Modified time: 2018-08-19 19:32:27
  */
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -27,7 +27,8 @@ var config = {
     entry: {
         'common': ['./src/page/common/index.js'],
         'index': ['./src/page/index/index.js'],
-        'login': ['./src/page/login/index.js']
+        'login': ['./src/page/login/index.js'],
+        'result': ['./src/page/login/index.js'],
     },
     output: {
         path: outputPath,
@@ -36,9 +37,9 @@ var config = {
     },
     module:{
         loaders:[
-            {test:/\.css$/,loader:ExtractTextPlugin.extract ("style-loader","css-loader")},
-            {test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=100&name=resource/[name].[ext]' },
-
+            {test: /\.css$/,loader:ExtractTextPlugin.extract ("style-loader","css-loader")},
+            {test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=100&name=resource/[name].[ext]' },,
+            {test: /\.string$/, loader: 'html-loader'}
         ],
     },
     resolve:{ // 为什么这么做？

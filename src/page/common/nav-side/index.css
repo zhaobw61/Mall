@@ -1,0 +1,26 @@
+/*
+ * @Author: zhaobowen 
+ * @Date: 2018-08-19 17:27:54 
+ * @Last Modified by: zhaobowen
+ * @Last Modified time: 2018-08-19 17:39:22
+ */
+ /* 导航主体 */
+ .nav-side{
+     float:  left;
+     width: 130px;
+ }
+ .nav-side .nav-item{
+     line-height: 25px;
+     font-size: 13px;
+ }
+ .nav-side .nav-item .link{
+     color: #888;
+ }
+ .nav-side .nav-item.active .link{
+     color: #c60023;
+ }
+ /* 右侧内容区 */
+ .content.with-nav{
+     float: left;
+     width: 950px;
+ }
